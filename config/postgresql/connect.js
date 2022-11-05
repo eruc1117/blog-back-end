@@ -11,5 +11,4 @@ const config = ({
 })
 
 let connection = new pg.Pool(config)
-console.log(connection)
 module.exports = () => {return connection}
