@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    res.send('About birds');
-})
+const title = require("./models/articles/titles")
+
+router.use('/api/title', title)
 
 module.exports = router
