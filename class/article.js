@@ -1,5 +1,4 @@
-const pool = require("../config/postgresql/connect")
-const mongodb = require("../config/mongodb/connect")
+const ArticleModel = require("../config/mongodb/models/article")
 
 class Article  {
     constructor(id) {
@@ -8,18 +7,12 @@ class Article  {
 
     async getData () {
         try {
-            const db = mongodb.client.db("blog")
-            const articleCollection = db.collection("article")
-            const query = {id: this.id}
-            console.log(query)
-            const article = await articleCollection.findOne(query)
+            const query = {id: Number(this.id)}
+            const article = await ArticleModel.findOne(query)
             return article
         } catch (err) {
             console.log(err)
-        } finally {
-            await mongodb.client.close()
         }
-
     }
 }
 

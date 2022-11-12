@@ -6,7 +6,7 @@ db.once('open', async () => {
         {
             "id": 1,
             "author_id": 1,
-            "title": "titel",
+            "title": "title",
             "article": "TEST"
         }
     )

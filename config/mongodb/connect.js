@@ -1,13 +1,16 @@
-const path = require('path')
-const envPath = path.join(__dirname, '../../.env')
-require('dotenv').config({ path: envPath })
-const {MongoClient} = require('mongodb');
+const path = require("path");
+const envPath = path.join(__dirname, "../../.env");
+require("dotenv").config({ path: envPath });
+const mongoose = require("mongoose");
 
-class MongoBot {
-    constructor() {
-      const url = process.env.MONGODBURI
-      this.client = new MongoClient(url);
-    }
-}
+mongoose.connect(process.env.MONGODBURI);
+const db = mongoose.connection;
 
-module.exports = new MongoBot();
+db.on("error", () => {
+  console.log("mongodb error!");
+});
+db.once("open", () => {
+  console.log("mongodb connected!");
+});
+
+module.exports = db
