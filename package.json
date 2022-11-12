@@ -17,5 +17,10 @@
     "mongodb": "^4.11.0",
     "path": "^0.12.7",
     "pg": "^8.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.27.0",
+    "prettier": "^2.7.1",
+    "prettier-eslint": "^15.0.1"
   }
 }

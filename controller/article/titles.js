@@ -10,9 +10,6 @@ const titleController = {
         } catch (err) {
             console.log(err)
         }
-    },
-    test: (req, res) => {
-        res.send("test")
     }
 }
 

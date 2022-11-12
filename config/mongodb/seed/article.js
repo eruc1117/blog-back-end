@@ -10,9 +10,10 @@ async function createArticle () {
         const result = await collection.insertOne({
             "id": 1,
             "author_id": 1,
+            "tilte": "titel",
             "article": "TEST"
         })
-        console.log(result)
+        return result
     } catch (err) {
         console.log(err)
     } finally {
