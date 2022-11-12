@@ -6,7 +6,8 @@ const titleController = {
             const id = Number(req.params.userId)
             const user = new User(id)
             const allTitle = await user.getAlltitle()
-            res.status(200).json(allTitle)
+            const jsonData = JSON.stringify(allTitle)
+            res.status(200).json(jsonData)
         } catch (err) {
             console.log(err)
         }
