@@ -3,6 +3,7 @@ const router = express.Router()
 
 const noteController = require("../../../controller/article/note")
 
-router.get('/:articleId', noteController.getUserArtNote)
+router.post('/:articleId', noteController.getUserArtNote)
+router.get('/:articleId', noteController.createNote)
 
 module.exports = router

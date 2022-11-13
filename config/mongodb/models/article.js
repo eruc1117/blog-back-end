@@ -9,8 +9,7 @@ const articleSchema = new Schema({
   },
   author_id: {
     type: Number,
-    required: true,
-    unique: true
+    required: true
   },
   title: {
     type: String,

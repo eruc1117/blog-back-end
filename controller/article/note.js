@@ -12,6 +12,18 @@ const noteController = {
     } catch (err) {
 			console.log(err)
 		}
+  },
+  createNote: async (req, res) => {
+    try {
+      const articleId = req.params.articleId;
+      const article = new Article(articleId);
+      const body = req.body
+      const result = await article.postNote(body)
+      const jsonData = JSON.stringify(result);
+      res.status(200).json(jsonData)
+    } catch (err) {
+
+    }
   }
 };
 

@@ -9,13 +9,11 @@ const noteSchema = new Schema({
   },
   author_id: {
     type: Number,
-    required: true,
-    unique: true
+    required: true
   },
   article_id: {
     type: Number,
-    required: true,
-    unique: true
+    required: true
   },
   note:{
     type: String,
