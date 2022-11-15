@@ -13,7 +13,7 @@ const noteController = {
 			console.log(err)
 		}
   },
-  createNote: async (req, res) => {
+  putNote: async (req, res) => {
     try {
       const articleId = req.params.articleId;
       const article = new Article(articleId);

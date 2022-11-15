@@ -7,7 +7,7 @@ const noteSchema = new Schema({
     required: true,
     unique: true
   },
-  author_id: {
+  reader_id: {
     type: Number,
     required: true
   },
@@ -16,8 +16,7 @@ const noteSchema = new Schema({
     required: true
   },
   note:{
-    type: String,
-    required: true
+    type: String
   } ,
 });
 
