@@ -6,8 +6,8 @@ const noteController = {
       const userId = 1; //暫時，之後用登入的 userId
       const articleId = req.params.articleId;
       const article = new Article(articleId);
-      const noteDatas = await article.getUserNotes(userId);
-      const jsonData = JSON.stringify(noteDatas);
+      const noteData = await article.getUserNotes(userId);
+      const jsonData = JSON.stringify(noteData);
 			res.status(200).json(jsonData)
     } catch (err) {
 			console.log(err)
