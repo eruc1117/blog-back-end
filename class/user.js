@@ -15,7 +15,7 @@ class User  {
     }
     getAlltitle () {
         const sqlCmd = `SELECT id , author_id, title FROM articles
-        WHERE author_id = ${this.id}`
+        WHERE author_id = ${this.id} ORDER BY id`
         return pool().query(sqlCmd)
         .then(res => {
             return res.rows

@@ -13,7 +13,6 @@ class Article {
     try {
       const query = { id: Number(this.id) };
       const article = await ArticleModel.findOne(query);
-      console.log(article)
       return {
         id: article.id,
         authorId: article.author_id,
