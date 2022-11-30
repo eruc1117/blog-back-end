@@ -81,15 +81,20 @@ class Article {
       const readerId = data.reader_id;
       const articleId = data.article_id;
       const sqlCmd = `INSERT INTO notes (article_id, reader_id)
-      VALUES (${readerId}, ${articleId})
+      VALUES (${articleId}, ${readerId})
       ON CONFLICT (article_id, reader_id) 
       DO Nothing RETURNING notes.id;`;
-      const sqlResult = await pool().query(sqlCmd);
-      let noteId = sqlResult.length > 0 ?
-      Number(sqlResult.rows[0]["id"]) :
-      null
+      const sqlResult = await pool().query(sqlCmd)
+      let noteId = 0
+      if ( sqlResult["rows"].length > 0) {
+        noteId = Number(sqlResult.rows[0]["id"]) 
+      } else {
+        const noteIdSql = `SELECT id FROM notes WHERE article_id = ${articleId} AND reader_id = ${readerId}`
+        const noteIdResult = await pool().query(noteIdSql)
+        noteId = Number(noteIdResult.rows[0]["id"]) 
+      }
       const filter = {article_id: articleId, reader_id:readerId}
-      const update = {article_id: articleId, reader_id:readerId, note: note}
+      const update = {id: noteId,article_id: articleId, reader_id:readerId, note: note}
       const option = {
         new: true,
         upsert: true // Make this update into an upsert
